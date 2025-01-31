@@ -33,6 +33,9 @@ def get_option():
   while True:
     try:
       option = int(input('Select an option (1-4):'))
+      if option < 0 :
+        print('Negative numbers are not allowed, try again.')
+        continue
       is_valid = lambda option: str(option) in options.keys()
       if is_valid(option):
         return option
@@ -40,6 +43,7 @@ def get_option():
         print('Invalid option try again.')
     except:
       print('Invalid type option... please try again')
+      continue
     
 show_menu()
 get_option()
