@@ -1,0 +1,18 @@
+name: Python Checks
+on: [push, pull_request] # It's execute in push and PR's 
+jobs:
+  lint:
+    runs-on: ubuntu-latest #Execute enviroment
+    steps:
+    - uses: actions/checkout@v2 # Clone the repo
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12.8' # Python Version 
+    - name: Install dependencies
+      run: |
+        pip install flake8
+    - name: lint with flake8
+      run: |
+        flake8 . --count --show-source --statistics
+    
