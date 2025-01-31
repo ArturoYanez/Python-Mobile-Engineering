@@ -13,3 +13,33 @@ books = {
     "ISBN13-9780143035117": ("One Hundred Years of Solitude", "Gabriel García Márquez", False)
 }
 
+# Initialization Menu
+options = {
+  "1" : "Search a books avaliable",
+  "2" : "Register a unique genre",
+  "3" : "Apply for a loan",
+  "4" : "Exit"
+}
+def show_menu():
+  print(''' Welcome to The Bibliophile's Bazar
+    —
+    What do you do?
+    —''')
+  for key, value in options.items():
+    print(f'{key}- {value}')
+    
+
+def get_option():
+  while True:
+    try:
+      option = int(input('Select an option (1-4):'))
+      is_valid = lambda option: str(option) in options.keys()
+      if is_valid(option):
+        return option
+      else:
+        print('Invalid option try again.')
+    except:
+      print('Invalid type option... please try again')
+    
+show_menu()
+get_option()
