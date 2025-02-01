@@ -23,6 +23,8 @@ options = {
   "4": "Exit"
 }
 
+registered_genres = set('Action')
+
 
 def show_menu():
   print(''' Welcome to The Bibliophile's Bazar
@@ -64,7 +66,23 @@ def search_available_books():
         --------------
         """)
 
+
+def register_genres(registered_genres):
+    while True:
+        try:
+            registered_genres.add(str(input('Enter the genre to register: ')) break
+        except KeyError:
+            print('This genre already exists, please enter another one.')
+            registered_genres.add(str(input('Enter the genre to register: '))
+            
+    print(registered_genres)
+    
+    
 show_menu()
 
-if get_option() == 1:
+action = get_option()
+
+if action == 1:
     search_available_books()
+elif action == 2:
+    register_genres()
