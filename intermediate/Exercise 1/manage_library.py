@@ -1,8 +1,10 @@
+
+
 # Managment System of Library
 # Data of Books Structure
 books = {
     "ISBN13-9780316015816": ("The Hobbit", "J.R.R. Tolkien", True),
-    "ISBN13-9780439023528": ("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", False),
+    "ISBN13-9780439023528": ("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", True),
     "ISBN13-9780060550796": ("To Kill a Mockingbird", "Harper Lee", True),
     "ISBN13-9780345391802": ("1984", "George Orwell", False),
     "ISBN13-9780679733417": ("Pride and Prejudice", "Jane Austen", True),
@@ -15,11 +17,13 @@ books = {
 
 # Initialization Menu
 options = {
-  "1" : "Search a books avaliable",
-  "2" : "Register a unique genre",
-  "3" : "Apply for a loan",
-  "4" : "Exit"
+  "1": "Search a books avaliable",
+  "2": "Register a unique genre",
+  "3": "Apply for a loan",
+  "4": "Exit"
 }
+
+
 def show_menu():
   print(''' Welcome to The Bibliophile's Bazar
     —
@@ -27,7 +31,7 @@ def show_menu():
     —''')
   for key, value in options.items():
     print(f'{key}- {value}')
-    
+
 
 def get_option():
   while True:
@@ -41,9 +45,26 @@ def get_option():
         return option
       else:
         print('Invalid option try again.')
-    except:
-      print('Invalid type option... please try again')
+    except ValueError:
+      print('Invalid type option, please try again')
       continue
-    
+
+
+def search_available_books():
+    availables = [
+        (isbn, book) for isbn, book in books.items()if book[2] is True
+        ]
+    print('''List of avaliables books:
+        *   *   *   *   *   *   *   *   *''')
+    for isbn, book in availables:
+        print(f"""
+        ISBN: {isbn}
+        name: {book[0]}
+        author: {book[1]}
+        --------------
+        """)
+
 show_menu()
-get_option()
+
+if get_option() == 1:
+    search_available_books()
