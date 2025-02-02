@@ -5,7 +5,7 @@ for i in range(3):
     money = float(input())
     # Amount Validation
     if money >= 0.6:
-        #Stock of products
+        # Stock of products
         stock = [
             'Water Icecream',
             'Vanilla Icecream',
@@ -16,7 +16,7 @@ for i in range(3):
             '1/4 kg Box of Icecream']
         purchase = []
         
-        #System of validations
+        # System of validations
         while money >= 0.6:
             if 0.6 <= money < 1:
                 money -= 0.6

@@ -6,6 +6,7 @@
 
 free_ticket = True
 
+
 def party_security(hour):
     global free_ticket 
     age = int(input('Enter your age please: '))
@@ -19,6 +20,7 @@ def party_security(hour):
             print('Pay your ticket and enter to the party...')
     else:
         print("Sorry, you can't enter to this party...")
+
 
 party_security(int(input('Enter the hour: ')))
 party_security(int(input('Enter the hour: ')))
