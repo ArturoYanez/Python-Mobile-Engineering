@@ -43,7 +43,9 @@ options = {
   "4": "Exit"
 }
 
+
 registered_genres = {'Action'}
+
 
 
 def show_menu():
@@ -68,8 +70,8 @@ def get_option():
       else:
         print('Invalid option try again.')
     except ValueError:
-     print('Invalid type option, please try again')
-     continue
+        print('Invalid type option, please try again')
+        continue
 
 
 def check_availability(books):
@@ -77,6 +79,7 @@ def check_availability(books):
         (isbn, book) for isbn, book in books.items()if book[2] is True
         ]
     return availables
+
     
     
 def search_available_books():
@@ -138,14 +141,17 @@ Tips: Must begin with 978 and have 13 characters
 
 
 show_menu()
+
 action = get_option()
 
 if action == 1:
     search_available_books()
 elif action == 2:
+
     register_genres(registered_genres)
     print(registered_genres)
 elif action == 3:
     print(books_loan())
 elif action == 4: 
     print('GoodBye - Credits to: Kry0')
+

@@ -28,7 +28,8 @@ def record_attendance(names):
 
 # Calculate and Evaluate Attendance
 def calculate_and_evaluate_attendance(records):
-    for record in records:
+
+for record in records:
         absencesTotal = record[1].count('A')
         if absencesTotal >= len(record[1]) * 0.55:  # 55% attendance allowed
         result = 'REPROBADO'
@@ -44,4 +45,6 @@ final_records = calculate_and_evaluate_attendance(records)
 
 # Print Final Results
 for record in final_records:
+
     print(f"Student: {record[0]}, Attendance: {record[1]}, Result: {record[2]}")
+
