@@ -69,6 +69,7 @@ def search_available_books():
 
 def register_genres(registered_genres):
     while True:
+<<<<<<< Updated upstream
         try:
             registered_genres.add(str(input('Enter the genre to register: ')) break
         except KeyError:
@@ -78,6 +79,57 @@ def register_genres(registered_genres):
     print(registered_genres)
     
     
+=======
+        genre = input('Enter the genre to register: ').strip().title()
+        if genre in registered_genres:
+            print(f'Error: {genre} already exits. Please enter a new genre.')
+        else:
+            registered_genres.add(genre)
+            print(f'Genre {genre} added successfully.')
+            break
+
+
+def books_loan():
+    while True:
+        try:
+            isbn_int = int(input('''Enter the code ISBN of the book: 
+          |  
+        ! if you dont know the ISBN code:
+        try to select option 1 in menu for seem
+        available books list'''))
+        except ValueError:
+            raise('ValieError: Invalid type input enter... Try again')
+            continue
+        isbn = str(isbn_int)
+        if isbn[0:3] == '978' and len(isbn) == 13:
+            isbn_validated = 'ISBN13'+'-'+isbn
+            availables = check_availability(books)
+            for i in availables:
+                if i[0] == isbn_validated:
+                    title, author, available = i[1]
+                    available = False
+                    books.update({isbn_validated: (title, author, available)})
+                    return f''' Enjoy your book:
+------------------
+ISBN: {i[0]}
+Title: {title}
+Author: {author}
+! REMEMBER RETURN ON TIME, Thanks you
+------------------'''
+            else:
+                print('''------------------
+This book is not available. Try with another book
+------------------''')
+                continue
+        else:
+            print('''------------------
+            ISBN13 Code Invalid. Try again.
+Tips: Must begin with 978 and have 13 characters
+------------------''')
+            continue
+
+
+>>>>>>> Stashed changes
 show_menu()
 
 action = get_option()
