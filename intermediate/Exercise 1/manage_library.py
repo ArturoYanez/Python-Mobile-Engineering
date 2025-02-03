@@ -8,16 +8,36 @@ book data with ISBN as keys and handles availability status updates.
 
 # Book data structure: ISBN as key, (title, author, availability_status)
 books = {
-    "ISBN13-9780316015816": ("The Hobbit", "J.R.R. Tolkien", True),
-    "ISBN13-9780439023528": ("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", True),
-    "ISBN13-9780060550796": ("To Kill a Mockingbird", "Harper Lee", True),
-    "ISBN13-9780345391802": ("1984", "George Orwell", False),
-    "ISBN13-9780679733417": ("Pride and Prejudice", "Jane Austen", True),
-    "ISBN13-9780060850499": ("The Catcher in the Rye", "J.D. Salinger", False),
-    "ISBN13-9780451524935": ("Fahrenheit 451", "Ray Bradbury", True),
-    "ISBN13-9780060249017": ("The Great Gatsby", "F. Scott Fitzgerald", False),
-    "ISBN13-9780393300003": ("The Adventures of Huckleberry Finn", "Mark Twain", True),
-    "ISBN13-9780143035117": ("One Hundred Years of Solitude", "Gabriel García Márquez", False)
+    "ISBN13-9780316015816": ("The Hobbit",
+    "J.R.R. Tolkien",
+    True),
+    "ISBN13-9780439023528": ("Harry Potter and the Sorcerer's Stone",
+    "J.K. Rowling",
+    True),
+    "ISBN13-9780060550796": ("To Kill a Mockingbird",
+    "Harper Lee",
+    True),
+    "ISBN13-9780345391802": ("1984",
+    "George Orwell",
+    False),
+    "ISBN13-9780679733417": ("Pride and Prejudice",
+    "Jane Austen",
+    True),
+    "ISBN13-9780060850499": ("The Catcher in the Rye",
+    "J.D. Salinger",
+    False),
+    "ISBN13-9780451524935": ("Fahrenheit 451",
+    "Ray Bradbury",
+    True),
+    "ISBN13-9780060249017": ("The Great Gatsby",
+    "F. Scott Fitzgerald",
+    False),
+    "ISBN13-9780393300003": ("The Adventures of Huckleberry Finn",
+    "Mark Twain",
+    True),
+    "ISBN13-9780143035117": ("One Hundred Years of Solitude",
+    "Gabriel García Márquez",
+     False)
 }
 
 # System menu options
@@ -28,7 +48,9 @@ options = {
     "4": "Exit system"
 }
 
+
 registered_genres = {'Action'}
+
 
 def show_menu():
     """Display the main menu options to the user."""
@@ -40,12 +62,14 @@ def show_menu():
         print(f'{key}: {value}')
 
 def get_option():
+
     """Get and validate user input for menu selection.
     
     Returns:
         int: Validated user choice between 1-4
     """
     while True:
+
         try:
             option = int(input('\nSelect an option (1-4): '))
             if option < 1 or option > 4:
@@ -59,7 +83,7 @@ def check_availability(book_collection):
     """Identify available books in the collection.
     
     Args:
-        book_collection (dict): Dictionary containing book data
+      ): Dictionary containing book data
         
     Returns:
         list: ISBN and details of available books
@@ -79,7 +103,7 @@ Author: {book[1]}
 
 def register_genre(existing_genres):
     """Register new book genre in the system.
-    
+  
     Args:
         existing_genres (set): Currently registered genres
         
@@ -93,11 +117,13 @@ def register_genre(existing_genres):
             continue
         if new_genre in existing_genres:
             print(f'"{new_genre}" already exists. Please enter a new genre.')
+
             continue
             
         existing_genres.add(new_genre)
         print(f'Successfully registered "{new_genre}" genre.')
         return existing_genres
+
 
 def process_loan():
     """Handle book loan process including ISBN validation and status update.
@@ -154,3 +180,4 @@ if __name__ == "__main__":
             print('\nThank you for using The Bibliophile\'s Bazaar!')
             print('Credits: Kry0')
             break
+
