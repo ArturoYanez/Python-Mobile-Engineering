@@ -96,6 +96,17 @@ author: {book[1]}
 
 def register_genres(registered_genres):
     while True:
+
+        try:
+            registered_genres.add(str(input('Enter the genre to register: ')) break
+        except KeyError:
+            print('This genre already exists, please enter another one.')
+            registered_genres.add(str(input('Enter the genre to register: '))
+            
+    print(registered_genres)
+    
+    
+
         genre = input('Enter the genre to register: ').strip().title()
         if genre in registered_genres:
             print(f'Error: {genre} already exits. Please enter a new genre.')
@@ -107,11 +118,19 @@ def register_genres(registered_genres):
 
 def books_loan():
     while True:
-        isbn = str(input('''Enter the code ISBN of the book: 
+
+        try:
+            isbn_int = int(input('''Enter the code ISBN of the book: 
           |  
         ! if you dont know the ISBN code:
         try to select option 1 in menu for seem
         available books list'''))
+
+        except ValueError:
+            raise('ValieError: Invalid type input enter... Try again')
+            continue
+        isbn = str(isbn_int)
+
         if isbn[0:3] == '978' and len(isbn) == 13:
             isbn_validated = 'ISBN13'+'-'+isbn
             availables = check_availability(books)
@@ -138,6 +157,7 @@ This book is not available. Try with another book
 Tips: Must begin with 978 and have 13 characters
 ------------------''')
             continue
+
 
 
 show_menu()
