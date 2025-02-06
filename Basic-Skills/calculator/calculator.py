@@ -24,7 +24,7 @@ def sum(a, b):
 def sub(a, b):
     result = a - b
     return result
-  
+
 
 def mul(a, b):
     result = a * b
@@ -71,4 +71,5 @@ while exit is False:
     elif option == 5:
         exit = True
         print(' Thanks to test our program, see ya later')
+
 
