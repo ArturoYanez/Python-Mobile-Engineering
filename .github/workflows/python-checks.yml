@@ -1,0 +1,13 @@
+# .github/workflows/python-ci.yml
+name: Python CI
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: pip install flake8 black
+      - run: flake8 . --count --show-source --statistics
+      - run: black --check .
