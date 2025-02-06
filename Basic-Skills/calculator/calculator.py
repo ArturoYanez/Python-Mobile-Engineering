@@ -19,18 +19,18 @@ exit = False
 def sum(a, b):
     result = a + b
     return result
-  
-  
+
+
 def sub(a, b):
     result = a - b
     return result
   
-  
+
 def mul(a, b):
     result = a * b
-    return
-  
-  
+    return result
+
+
 def div(a, b):
     result = a / b
     return result
@@ -45,7 +45,7 @@ while exit is False:
     4 - Division
     5 - Exit
   ''')
-  
+
     print('——————>')
     option = int(input('Enter the operation you want to perform [1 - 5]: '))
     if option == 1:
