@@ -9,4 +9,3 @@ def read_input():
 
 
 print(read_input())
-
