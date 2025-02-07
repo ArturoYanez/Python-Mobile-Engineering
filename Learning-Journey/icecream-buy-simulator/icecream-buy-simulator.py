@@ -15,7 +15,6 @@ for i in range(3):
             'Random Fruit Icecream',
             '1/4 kg Box of Icecream']
         purchase = []
-        
         # System of validations
         while money >= 0.6:
             if 0.6 <= money < 1:
@@ -57,12 +56,9 @@ for i in range(3):
                         switch = True
                     else:
                         print('Enter a valid option from the list...')
-                        
         # Resukts of the buy
         print("Thank you for buying: " + ', '.join(purchase))
         print("Your change is: $" + str(change))
-        
     else:
         print('Insufficient amount... Please try again')
-
 print('Thanks for using our software! :D')

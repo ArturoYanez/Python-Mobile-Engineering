@@ -8,7 +8,7 @@ free_ticket = True
 
 
 def party_security(hour):
-    global free_ticket 
+    global free_ticket
     age = int(input('Enter your age please: '))
     if age >= 18:
         if 2 <= hour < 7 and free_ticket:

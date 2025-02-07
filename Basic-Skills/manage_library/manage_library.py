@@ -8,36 +8,55 @@ book data with ISBN as keys and handles availability status updates.
 
 # Book data structure: ISBN as key, (title, author, availability_status)
 books = {
-    "ISBN13-9780316015816": ("The Hobbit",
-    "J.R.R. Tolkien",
-    True),
-    "ISBN13-9780439023528": ("Harry Potter and the Sorcerer's Stone",
-    "J.K. Rowling",
-    True),
-    "ISBN13-9780060550796": ("To Kill a Mockingbird",
-    "Harper Lee",
-    True),
-    "ISBN13-9780345391802": ("1984",
-    "George Orwell",
-    False),
-    "ISBN13-9780679733417": ("Pride and Prejudice",
-    "Jane Austen",
-    True),
-    "ISBN13-9780060850499": ("The Catcher in the Rye",
-    "J.D. Salinger",
-    False),
-    "ISBN13-9780451524935": ("Fahrenheit 451",
-    "Ray Bradbury",
-    True),
-    "ISBN13-9780060249017": ("The Great Gatsby",
-    "F. Scott Fitzgerald",
-    False),
-    "ISBN13-9780393300003": ("The Adventures of Huckleberry Finn",
-    "Mark Twain",
-    True),
-    "ISBN13-9780143035117": ("One Hundred Years of Solitude",
-    "Gabriel García Márquez",
-     False)
+    "ISBN13-9780316015816": (
+        "The Hobbit",
+        "J.R.R. Tolkien",
+        True
+        ),
+    "ISBN13-9780439023528": (
+        "Harry Potter and the Sorcerer's Stone",
+        "J.K. Rowling",
+        True
+        ),
+    "ISBN13-9780060550796": (
+        "To Kill a Mockingbird",
+        "Harper Lee",
+        True
+        ),
+    "ISBN13-9780345391802": (
+        "1984",
+        "George Orwell",
+        False),
+    "ISBN13-9780679733417": (
+        "Pride and Prejudice",
+        "Jane Austen",
+        True
+        ),
+    "ISBN13-9780060850499": (
+        "The Catcher in the Rye",
+        "J.D. Salinger",
+        False
+        ),
+    "ISBN13-9780451524935": (
+        "Fahrenheit 451",
+        "Ray Bradbury",
+        True
+        ),
+    "ISBN13-9780060249017": (
+        "The Great Gatsby",
+        "F. Scott Fitzgerald",
+        False
+        ),
+    "ISBN13-9780393300003": (
+        "The Adventures of Huckleberry Finn",
+        "Mark Twain",
+        True
+        ),
+    "ISBN13-9780143035117": (
+        "One Hundred Years of Solitude",
+        "Gabriel García Márquez",
+        False
+        )
 }
 
 # System menu options
@@ -61,11 +80,10 @@ def show_menu():
     for key, value in options.items():
         print(f'{key}: {value}')
 
-def get_option():
 
+def get_option():
     """Get and validate user input for menu selection.
-    
-    Returns:
+    \nReturns:
         int: Validated user choice between 1-4
     """
     while True:
@@ -79,16 +97,16 @@ def get_option():
         except ValueError:
             print('Invalid input. Please enter a numeric value.')
 
+
 def check_availability(book_collection):
-    """Identify available books in the collection.
-    
-    Args:
-      ): Dictionary containing book data
-        
-    Returns:
+    """Identify available books in the icollection.
+    \nArgs:
+        Dictionary containing book data
+    \nReturns:
         list: ISBN and details of available books
     """
     return [(isbn, book) for isbn, book in book_collection.items() if book[2]]
+
 
 def display_available_books():
     """Show formatted list of all available books."""
@@ -101,13 +119,12 @@ Title: {book[0]}
 Author: {book[1]}
 --------------""")
 
+
 def register_genre(existing_genres):
     """Register new book genre in the system.
-  
-    Args:
-        existing_genres (set): Currently registered genres
-        
-    Returns:
+    \nArgs:
+        existing_genres (set): Currently registered genre
+    \nReturns:
         set: Updated set of genres with new addition
     """
     while True:
@@ -119,7 +136,7 @@ def register_genre(existing_genres):
             print(f'"{new_genre}" already exists. Please enter a new genre.')
 
             continue
-            
+
         existing_genres.add(new_genre)
         print(f'Successfully registered "{new_genre}" genre.')
         return existing_genres
@@ -127,25 +144,34 @@ def register_genre(existing_genres):
 
 def process_loan():
     """Handle book loan process including ISBN validation and status update.
-    
+
     Returns:
         str: Loan confirmation message or availability notice
     """
     print("""\nBook Loan Process:
-    |  
-    ! TIP: Select option 1 from the menu to see available books""")
-    
+    |
+    !TIP: Select option 1 from the menu to see available books""")
+
     while True:
-        isbn_input = input('\nEnter 13-digit ISBN (starting with 978): ').strip()
-        
+        isbn_input = input(
+            '\nEnter 13-digit ISBN '
+            '(starting with 978): '
+        ).strip()
+
         # Validate ISBN format
-        if len(isbn_input) != 13 or not isbn_input.isdigit() or not isbn_input.startswith('978'):
-            print('\nInvalid ISBN format. Must be 13 numeric characters starting with 978.')
+        if (
+            len(isbn_input) != 13
+            or not isbn_input.isdigit()
+            or not isbn_input.startswith('978')
+        ):
+            print(
+                '''\nInvalid ISBN format. Must be
+                ISBN13-numeric characters starting with 978.'''
+            )
             continue
-            
+
         full_isbn = f'ISBN13-{isbn_input}'
         available_books = check_availability(books)
-        
         # Check book availability
         for isbn, book in available_books:
             if isbn == full_isbn:
@@ -157,17 +183,16 @@ def process_loan():
 ISBN: {isbn}
 Title: {book[0]}
 Author: {book[1]}
-! Please return by the due date. Thank you!
+!Please return by the due date. Thank you!
 ------------------"""
-        
         print('\nBook not available. Please check ISBN or try another title.')
+
 
 # Main program flow
 if __name__ == "__main__":
     while True:
         show_menu()
         choice = get_option()
-        
         if choice == 1:
             display_available_books()
         elif choice == 2:
@@ -180,4 +205,3 @@ if __name__ == "__main__":
             print('\nThank you for using The Bibliophile\'s Bazaar!')
             print('Credits: Kry0')
             break
-
